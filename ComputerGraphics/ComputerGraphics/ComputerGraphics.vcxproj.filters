@@ -18,5 +18,8 @@
     <ClCompile Include="HelloGL.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="HelloGL2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

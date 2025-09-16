@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|solutionrelative:ComputerGraphics\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|solutionrelative:ComputerGraphics\\HelloGL2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HelloGL.cpp",
-              "DocumentMoniker": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL.cpp",
-              "RelativeDocumentMoniker": "ComputerGraphics\\HelloGL.cpp",
-              "ToolTip": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL.cpp",
-              "RelativeToolTip": "ComputerGraphics\\HelloGL.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAeAAAAAAAAAA==",
+              "Title": "HelloGL2.cpp",
+              "DocumentMoniker": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL2.cpp",
+              "RelativeDocumentMoniker": "ComputerGraphics\\HelloGL2.cpp",
+              "ToolTip": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL2.cpp",
+              "RelativeToolTip": "ComputerGraphics\\HelloGL2.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-04T07:12:55.722Z",
+              "WhenOpened": "2025-09-11T04:32:15.342Z",
               "EditorCaption": ""
             }
           ]
