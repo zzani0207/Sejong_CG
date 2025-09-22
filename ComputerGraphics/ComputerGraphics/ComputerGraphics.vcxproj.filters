@@ -18,8 +18,22 @@
     <ClCompile Include="HelloGL.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="HelloGL2.cpp">
+    <ClCompile Include="ManyPoints.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="CG_Week3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CG_Week3_ColorCube.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vshader.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fshader.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

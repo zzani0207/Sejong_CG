@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|solutionrelative:ComputerGraphics\\HelloGL2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\vshader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|solutionrelative:ComputerGraphics\\vshader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\CG_Week3_ColorCube.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|solutionrelative:ComputerGraphics\\CG_Week3_ColorCube.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\fshader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{85EE640B-3405-4CAB-BEBD-B18F3107F6DB}|ComputerGraphics\\ComputerGraphics.vcxproj|solutionrelative:ComputerGraphics\\fshader.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 163,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HelloGL2.cpp",
-              "DocumentMoniker": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL2.cpp",
-              "RelativeDocumentMoniker": "ComputerGraphics\\HelloGL2.cpp",
-              "ToolTip": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\HelloGL2.cpp",
-              "RelativeToolTip": "ComputerGraphics\\HelloGL2.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAACAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CG_Week3_ColorCube.cpp",
+              "DocumentMoniker": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\CG_Week3_ColorCube.cpp",
+              "RelativeDocumentMoniker": "ComputerGraphics\\CG_Week3_ColorCube.cpp",
+              "ToolTip": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\CG_Week3_ColorCube.cpp",
+              "RelativeToolTip": "ComputerGraphics\\CG_Week3_ColorCube.cpp",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAAFgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-11T04:32:15.342Z",
+              "WhenOpened": "2025-09-18T05:29:30.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "vshader.glsl",
+              "DocumentMoniker": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\vshader.glsl",
+              "RelativeDocumentMoniker": "ComputerGraphics\\vshader.glsl",
+              "ToolTip": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\vshader.glsl",
+              "RelativeToolTip": "ComputerGraphics\\vshader.glsl",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-18T05:29:32.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "fshader.glsl",
+              "DocumentMoniker": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\fshader.glsl",
+              "RelativeDocumentMoniker": "ComputerGraphics\\fshader.glsl",
+              "ToolTip": "C:\\Users\\ahnch\\GitProject\\Sejong_CG\\ComputerGraphics\\ComputerGraphics\\fshader.glsl",
+              "RelativeToolTip": "ComputerGraphics\\fshader.glsl",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-16T05:15:32.09Z",
               "EditorCaption": ""
             }
           ]
