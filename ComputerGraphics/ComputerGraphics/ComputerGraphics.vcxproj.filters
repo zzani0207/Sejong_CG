@@ -27,12 +27,21 @@
     <ClCompile Include="CG_Week3_ColorCube.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="CG_Week4.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="vshader.glsl">
       <Filter>리소스 파일</Filter>
     </None>
     <None Include="fshader.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fshader7.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="vshader7.glsl">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
