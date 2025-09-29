@@ -42,13 +42,13 @@ void display()
 
 int main(int argc, char** argv)
 {
-	//gluCreateWindow±îÁø ÃÊ±â¼¼ÆÃ µðÆúÆ® ¾ç½Ä
+	//gluCreateWindowï¿½ï¿½ï¿½ï¿½ ï¿½Ê±â¼¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
-	//ÇØ»óµµ ¼³Á¤
+	//ï¿½Ø»ï¿½ ï¿½ï¿½ï¿½ï¿½
 	glutInitWindowSize(512, 512);
-	//Ã¢ÀÇ Á¦¸ñ
+	//Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	glutCreateWindow("Hello GL");
 
 	glutDisplayFunc(display);

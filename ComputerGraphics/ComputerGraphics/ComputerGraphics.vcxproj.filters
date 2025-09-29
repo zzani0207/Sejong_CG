@@ -27,7 +27,10 @@
     <ClCompile Include="CG_Week3_ColorCube.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CG_Week4.cpp">
+    <ClCompile Include="CG_Week4_1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CG_Week4_2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,5 +47,19 @@
     <None Include="vshader7.glsl">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="vshader8.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fshader8.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyColorCube.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyColorCylinder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
