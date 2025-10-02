@@ -15,20 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\ComputerGraphics\ComputerGraphics\Homework1_WavingPlane.cpp">
+    <ClCompile Include="Homework1_WavingPlane.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\ComputerGraphics\ComputerGraphics\MyPlane.h">
+    <ClInclude Include="MyPlane.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\ComputerGraphics\ComputerGraphics\fshader_waving.glsl">
+    <None Include="fshader_plane.glsl">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="..\..\ComputerGraphics\ComputerGraphics\vhsader_waving.glsl">
+    <None Include="vshader_plane.glsl">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
