@@ -24,6 +24,9 @@ public:
 	GLuint prog;
 	bool isInit;
 	bool isWave;
+	float waveSpeed;
+	float waveHeight;
+	float waveFrequency;
 
 	MyPlane()
 	{
@@ -31,7 +34,11 @@ public:
 		numVertices = 0;
 		isInit = false;
 		isWave = false;
+		waveSpeed = 1.0f;
+		waveHeight = 1.0f;
+		waveFrequency = 1.0f;
 	}
+
 	void init(int numSquare)
 	{
 		// glutInit, glewInit 이 호출된 이후 호출될 것
@@ -41,19 +48,22 @@ public:
 
 		MyPlaneVertex* data = new MyPlaneVertex[numVertices];
 
-		float edge = 1.5f; // 셰이더에서 거리 계산을 편하게 하기 위해 크기를 1.0으로 변경
+		float edge = 1.5f; // 평면의 한 변의 길이
 		int curIdx = 0;
 		const vec4 darkGray = vec4(0.2f, 0.2f, 0.2f, 1);
 		const vec4 lightGray = vec4(0.8f, 0.8f, 0.8f, 1);
 		for (int i = 0; i < numSquare; i++)
 		{
-			float length = edge / numSquare;
+			float length = edge / numSquare; // 한 칸의 길이
+
 			// 평면의 중심이 (0,0)이 되도록 좌표 수정
 			float y1 = length * i - edge/2.0f;
 			float y2 = length * (i + 1) - edge/2.0f;
 			for (int j = 0; j < numSquare; j++)
 			{
 				vec4 color = !((i + j) % 2) ? darkGray : lightGray;
+
+				// 평면의 중심이 (0,0)이 되도록 좌표 수정
 				float x1 = length * j - edge/2.0f;
 				float x2 = length * (j + 1) - edge/2.0f;
 
@@ -116,23 +126,76 @@ public:
 		GLuint uIsWave = glGetUniformLocation(prog, "uIsWave");
 		glUniform1i(uIsWave, isWave); // bool을 int로 전달 (true=1, false=0)
 
+		GLuint uWaveHeight = glGetUniformLocation(prog, "uWaveHeight");
+		glUniform1f(uWaveHeight, waveHeight);
+
+		GLuint uWaveFrequency = glGetUniformLocation(prog, "uWaveFrequency");
+		glUniform1f(uWaveFrequency, waveFrequency);
+
+		GLuint uWaveSpeed = glGetUniformLocation(prog, "uWaveSpeed");
+		glUniform1f(uWaveSpeed, waveSpeed);
+
 		glDrawArrays(GL_TRIANGLES, 0, numVertices);
 	}
 
 	void increaseDiv()
 	{
+		printf("Div: %d / Num of Triangles: %d / Num of Vertices: %d\n", numSquare, numSquare * numSquare * 2, numVertices);
 		init(numSquare + 1);
 	}
 
 	void decreaseDiv()
 	{
+		printf("Div: %d / Num of Triangles: %d / Num of Vertices: %d\n", numSquare, numSquare * numSquare * 2, numVertices);
 		init(numSquare - 1);
 	}
 
-	// 이 함수는 isWave 플래그를 토글하는 역할만 합니다.
-	void Wave()
+	void wave()
 	{
 		isWave = !isWave;
+	}
+
+	void waveSpeedUp()
+	{
+		printf("Wave Speed: %.1f\n", waveSpeed);
+		waveSpeed += 0.05f;
+		if (waveSpeed > 3.0f) waveSpeed = 3.0f;
+		
+	}
+
+	void waveSpeedDown()
+	{
+		printf("Wave Speed: %.1f\n", waveSpeed);
+		waveSpeed -= 0.05f;
+		if (waveSpeed < 0.0f) waveSpeed = 0.0f;
+	}
+
+	void waveHeightUp()
+	{
+		printf("Wave Height: %.1f\n", waveHeight);
+		waveHeight += 0.1f;
+		if (waveHeight > 2.5f) waveHeight = 2.5f;
+	}
+
+	void waveHeightDown()
+	{
+		printf("Wave Height: %.1f\n", waveHeight);
+		waveHeight -= 0.1f;
+		if (waveHeight < 0.0f) waveHeight = 0.0f;
+	}
+
+	void waveFrequencyUp()
+	{
+		printf("Wave Frequency: %.1f\n", waveFrequency);
+		waveFrequency += 0.1f;
+		if (waveFrequency > 30.0f) waveFrequency = 30.0f;
+	}
+
+	void waveFrequencyDown()
+	{
+		printf("Wave Frequency: %.1f\n", waveFrequency);
+		waveFrequency -= 0.1f;
+		if (waveFrequency < 1.0f) waveFrequency = 1.0f;
 	}
 };
 

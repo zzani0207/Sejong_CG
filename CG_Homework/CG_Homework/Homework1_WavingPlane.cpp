@@ -39,13 +39,19 @@ void myIdle()
 
 void myKeyboard(unsigned char key, int x, int y)
 {
-	printf("key = %c, x=%d, y=%d\n", key, x, y);
+	//printf("key = %c, x=%d, y=%d\n", key, x, y);
 	switch (key)
 	{
 	case ' ':	g_bPlay = !g_bPlay;			break;
 	case '1': plane.decreaseDiv();			break;
 	case '2': plane.increaseDiv();			break;
-	case 'w': plane.Wave(); 				break;
+	case 'w': plane.wave(); 				break;
+	case 'a': plane.waveSpeedUp();			break;
+	case 's': plane.waveSpeedDown();		break;
+	case 'd': plane.waveHeightUp();			break;
+	case 'f': plane.waveHeightDown();		break;
+	case 'g': plane.waveFrequencyUp();		break;
+	case 'h': plane.waveFrequencyDown();	break;
 	case 'q': exit(0);						break;
 	default:								break;
 	}
@@ -69,8 +75,14 @@ int main(int argc, char** argv)
 	printf("------------------------------------------------\n");
 	printf("'1' : Decrease the number of division\n");
 	printf("'2' : Dncrease the number of division\n");
+	printf("'A' : Increase wave speed\n");
+	printf("'S' : Decrease wave speed\n");
+	printf("'D' : Increase wave height\n");
+	printf("'F' : Decrease wave height\n");
+	printf("'G' : Increase wave frequency\n");
+	printf("'H' : Decrease wave frequency\n\n");
 	printf("'W' : Start wave/Pause\n");
-	printf("'space bar' : Play/Pause\n");
+	printf("'Space Bar' : Play/Pause\n");
 	printf("'Q' : Quit\n");
 	printf("------------------------------------------------\n");
 
