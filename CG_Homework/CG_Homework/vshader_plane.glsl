@@ -25,16 +25,18 @@ void main()
 		float dist = length(vPosition.xy);
 		
 		// 2. 거리와 시간을 이용해 Z축 방향의 웨이브 높이를 계산
-		// -0.15: 웨이브의 최대 높이
-		// 15.0: 웨이브의 주기
-		// 5.0: 웨이브의 속도
+		// -0.15: 웨이브의 기본 최대 높이
+		// 15.0: 웨이브의 기본 주기
+		// 5.0: 웨이브의 기본 속도
 		float speed = 5.0 * uWaveSpeed;
 		float frequency = 15.0 * uWaveFrequency;
 		float height = 0.15 * uWaveHeight;
 		float waveHeight = -height * sin(dist * frequency - uTime * speed);
 
 		// 3. 감쇠 계수를 계산	
-		float attenuation = 1.0 - smoothstep(0.3, 1, dist);
+		float attenuation = 1.0 - dist * dist;
+		if(attenuation < 0.0)
+			attenuation = 0.0;
 
 		// 4. 계산된 높이에 감쇠 계수를 곱하여 최종 높이를 결정
 		wavePos.z += waveHeight * attenuation;

@@ -1,2 +1,11 @@
-﻿  CG_Week5_1.cpp
+﻿  CG_Week5_2.cpp
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\MySphere.h(64,33): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+  (소스 파일 'CG_Week5_2.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\MySphere.h(64,28): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+  (소스 파일 'CG_Week5_2.cpp'을(를) 컴파일하는 중)
+  
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\MySphere.h(64,23): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+  (소스 파일 'CG_Week5_2.cpp'을(를) 컴파일하는 중)
+  
   ComputerGraphics.vcxproj -> C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\ComputerGraphics.exe

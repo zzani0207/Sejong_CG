@@ -12,7 +12,7 @@ void main()
 	vec4 orange = vec4(1.0, 0.647, 0.0, 1.0);
 	vec4 blue =vec4(0.4, 0.7, 1.0, 1.0);
 	
-	// 웨이브 높이에 비례하는 0.0 ~ 1.0 (또는 그 이상)의 강도(t)를 계산합니다.
+	// 웨이브 높이에 비례하는 0.0 ~ 1.0 (또는 그 이상)의 강도(t)를 계산
 	float max_height = 0.15;
 	float t = abs(position.z) / max_height;
 

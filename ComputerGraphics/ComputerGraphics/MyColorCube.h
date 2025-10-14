@@ -38,7 +38,6 @@ public:
 
 	GLuint vao;
 	GLuint vbo;
-	GLuint prog;
 
 	int curIdx = 0;
 
@@ -64,14 +63,6 @@ public:
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vec4) * numVertices + sizeof(vec4) * numVertices, nullptr, GL_STATIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vec4) * numVertices, points);
 		glBufferSubData(GL_ARRAY_BUFFER, sizeof(vec4) * numVertices, sizeof(vec4) * numVertices, colors);
-
-		// 2. load shaders
-		prog = InitShader("vshader8.glsl", "fshader8.glsl");
-		glUseProgram(prog);
-
-		// 3. connect data to shader
-		connectShader2Buffer();
-
 	}
 
 	void rect(int a, int b, int c, int d) {
@@ -84,19 +75,15 @@ public:
 		points[curIdx] = cubeVertex[a]; colors[curIdx] = cubeColor[a];  curIdx++;
 	}
 
-	void draw(float curTime)
+	void draw(GLuint prog)
 	{
 		glBindVertexArray(vao);
-		glUseProgram(prog);
-		connectShader2Buffer();
-
-		GLuint uTime = glGetUniformLocation(prog, "uTime");
-		glUniform1f(uTime, curTime);
+		connectShader2Buffer(prog);
 
 		glDrawArrays(GL_TRIANGLES, 0, numVertices);
 	}
 
-	void connectShader2Buffer()
+	void connectShader2Buffer(GLuint prog)
 	{
 		GLuint vPosition = glGetAttribLocation(prog, "vPosition");
 		glEnableVertexAttribArray(vPosition);

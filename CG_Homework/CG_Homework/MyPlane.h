@@ -174,7 +174,7 @@ public:
 	{
 		printf("Wave Height: %.1f\n", waveHeight);
 		waveHeight += 0.1f;
-		if (waveHeight > 2.5f) waveHeight = 2.5f;
+		if (waveHeight > 4.5f) waveHeight = 4.5f;
 	}
 
 	void waveHeightDown()

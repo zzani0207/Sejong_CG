@@ -4,9 +4,11 @@
 #include <vec.h>
 #include "MyColorCube.h"
 #include "MyColorCylinder.h"
+#include "MySphere.h"
 
 MyColorCube cube;
 MyColorCylinder cylinder;
+MySphere sphere;
 
 GLuint prog;
 
@@ -14,11 +16,12 @@ float g_time = 0.0f;
 bool g_bPlay = false;
 
 
-void myInit() {
-	cube.initCube();
-	cylinder.init(8);
-
-	prog = InitShader("vshader8.glsl", "fshader8.glsl");
+void myInit()
+{
+	//cube.initCube();
+	//cylinder.init(8);
+	sphere.init(20, 20);
+	prog = InitShader("vshader.glsl", "fshader.glsl");
 }
 
 void display()
@@ -31,7 +34,8 @@ void display()
 	GLuint uTime = glGetUniformLocation(prog, "uTime");
 	glUniform1f(uTime, g_time);
 	//cube.draw(prog);
-	cylinder.draw(prog);
+	//cylinder.draw(prog);
+	sphere.draw(prog);
 
 	glFlush();
 

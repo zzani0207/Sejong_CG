@@ -22,7 +22,6 @@ public:
 
 	GLuint vao;
 	GLuint vbo;
-	GLuint prog;
 	bool isInit;
 
 	MyColorCylinder()
@@ -87,18 +86,11 @@ public:
 		//glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vec4) * numVertices, points);
 		//glBufferSubData(GL_ARRAY_BUFFER, sizeof(vec4) * numVertices, sizeof(vec4) * numVertices, colors);
 
-		// 2. load shaders
-		if(!isInit) prog = InitShader("vshader8.glsl", "fshader8.glsl");
-		glUseProgram(prog);
-
-		// 3. connect data to shader
-		connectData2Shader();
-
 		delete[] data;
 		isInit = true;
 	}
 
-	void connectData2Shader()
+	void connectData2Shader(GLuint prog)
 	{
 		GLuint vPosition = glGetAttribLocation(prog, "vPosition");
 		glEnableVertexAttribArray(vPosition);
@@ -109,12 +101,12 @@ public:
 		glVertexAttribPointer(vColor, 4, GL_FLOAT, GL_FALSE, sizeof(MyCylinderVertex), BUFFER_OFFSET(sizeof(vec4)));
 	}
 
-	void draw(float curTime)
+	void draw(GLuint prog)
 	{
-		connectData2Shader();
+		glBindVertexArray(vao);
 
-		GLuint utime = glGetUniformLocation(prog, "uTime");
-		glUniform1f(utime, curTime);
+		glUseProgram(prog);
+		connectData2Shader(prog);
 
 		glDrawArrays(GL_TRIANGLES, 0, numVertices);
 	}
