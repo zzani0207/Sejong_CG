@@ -1,11 +1,24 @@
-﻿  CG_Week5_2.cpp
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\MySphere.h(64,33): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-  (소스 파일 'CG_Week5_2.cpp'을(를) 컴파일하는 중)
-  
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\MySphere.h(64,28): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-  (소스 파일 'CG_Week5_2.cpp'을(를) 컴파일하는 중)
-  
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\MySphere.h(64,23): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-  (소스 파일 'CG_Week5_2.cpp'을(를) 컴파일하는 중)
-  
+﻿  CG_Week9_1.cpp
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(33,26): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(38,27): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(41,29): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(41,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(41,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(46,43): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(46,37): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(46,32): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(51,28): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(51,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(51,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(78,28): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(78,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(78,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(83,42): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(84,51): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(84,46): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(84,41): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(89,42): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(90,30): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(90,24): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(90,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
   ComputerGraphics.vcxproj -> C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\ComputerGraphics.exe

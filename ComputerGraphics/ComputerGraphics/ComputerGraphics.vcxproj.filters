@@ -39,6 +39,9 @@
     <ClCompile Include="CG_Week5_2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="CG_Week9_1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="vshader.glsl">
@@ -59,6 +62,12 @@
     <None Include="fshader8.glsl">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="vshader9.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fshader9.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyColorCube.h">
@@ -68,6 +77,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MySphere.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPyramid.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyCube.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

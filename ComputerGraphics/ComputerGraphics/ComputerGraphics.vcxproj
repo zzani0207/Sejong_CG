@@ -156,7 +156,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="CG_Week5_2.cpp" />
+    <ClCompile Include="CG_Week5_2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CG_Week9_1.cpp" />
     <ClCompile Include="ManyPoints.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -165,6 +168,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <None Include="fshader9.glsl" />
+    <None Include="vshader9.glsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fshader.glsl" />
@@ -176,6 +181,8 @@
   <ItemGroup>
     <ClInclude Include="MyColorCube.h" />
     <ClInclude Include="MyColorCylinder.h" />
+    <ClInclude Include="MyCube.h" />
+    <ClInclude Include="MyPyramid.h" />
     <ClInclude Include="MySphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
