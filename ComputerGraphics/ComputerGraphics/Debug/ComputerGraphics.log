@@ -1,72 +1,63 @@
-﻿  CG_Week9_2.cpp
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(38,22): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(38,17): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(38,12): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(44,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(44,45): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(44,40): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(44,35): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(49,22): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(50,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(50,45): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(50,40): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(50,35): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(55,22): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(56,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(56,46): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(56,41): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(56,36): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(70,22): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(70,17): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(70,12): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(78,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(78,45): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(78,40): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(78,35): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(84,22): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(85,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(85,46): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(85,41): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(85,36): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(92,24): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(92,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(93,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(93,45): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(93,40): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(93,35): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(104,25): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(104,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(105,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(105,45): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(105,40): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(105,35): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(111,24): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(111,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(112,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(112,46): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(112,41): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(112,36): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(119,24): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(119,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(120,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(120,46): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(120,41): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(120,36): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(129,25): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(129,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(130,19): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(130,46): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(130,41): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(130,36): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(140,26): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(145,27): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(148,29): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(148,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(148,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(153,43): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(153,37): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(153,32): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(158,28): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(158,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
-C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_2.cpp(158,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+﻿  CG_Week9_1.cpp
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(33,26): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(38,27): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(41,29): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(41,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(41,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(46,43): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(46,37): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(46,32): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(51,28): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(51,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(51,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(78,28): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(78,23): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(78,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(83,42): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(84,51): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(84,46): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(84,41): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(89,42): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(90,30): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(90,24): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\ComputerGraphics\CG_Week9_1.cpp(90,18): warning C4305: '인수': 'double'에서 'const GLfloat'(으)로 잘립니다.
+glew_static_vs2010_d.lib(glew.obj) : warning LNK4099: 'vc100.pdb' PDB를 'glew_static_vs2010_d.lib(glew.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\vc100.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_callbacks.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_callbacks.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_cursor.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_cursor.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_display.obj) : warning LNK4099: '' PDB를 'freeglut_static_vs2015_d.lib(fg_display.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_ext.obj) : warning LNK4099: '' PDB를 'freeglut_static_vs2015_d.lib(fg_ext.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_font_data.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_font_data.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_gamemode.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_gamemode.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_geometry.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_geometry.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_gl2.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_gl2.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_init.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_init.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_input_devices.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_input_devices.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_joystick.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_joystick.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_main.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_main.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_misc.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_misc.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_overlay.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_overlay.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_spaceball.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_spaceball.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_state.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_state.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_stroke_mono_roman.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_stroke_mono_roman.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_stroke_roman.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_stroke_roman.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_structure.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_structure.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_teapot.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_teapot.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_videoresize.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_videoresize.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_window.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_window.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_font.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_font.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_menu.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_menu.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_cursor_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_cursor_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_display_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_display_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_ext_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_ext_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_gamemode_mswin.obj) : warning LNK4099: '' PDB를 'freeglut_static_vs2015_d.lib(fg_gamemode_mswin.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_init_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_init_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_input_devices_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_input_devices_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_joystick_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_joystick_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_main_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_main_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_menu_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_menu_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_spaceball_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_spaceball_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_state_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_state_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_structure_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_structure_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(fg_window_mswin.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(fg_window_mswin.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+freeglut_static_vs2015_d.lib(xparsegeometry_repl.obj) : warning LNK4099: 'freeglut_static.pdb' PDB를 'freeglut_static_vs2015_d.lib(xparsegeometry_repl.obj)' 또는 'C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\freeglut_static.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
   ComputerGraphics.vcxproj -> C:\Users\ahnch\GitProject\Sejong_CG\ComputerGraphics\Debug\ComputerGraphics.exe

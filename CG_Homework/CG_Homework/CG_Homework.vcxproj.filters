@@ -18,9 +18,21 @@
     <ClCompile Include="Homework1_WavingPlane.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Homework2_RobotArm.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlane.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyCube.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPyramid.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTarget.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,6 +41,12 @@
       <Filter>리소스 파일</Filter>
     </None>
     <None Include="vshader_plane.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fshader_arm.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="vshader_arm.glsl">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>

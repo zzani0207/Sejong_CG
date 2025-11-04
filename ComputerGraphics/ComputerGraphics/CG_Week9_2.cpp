@@ -14,7 +14,7 @@ GLuint uMat;
 
 mat4 g_Mat = mat4(1.0);
 
-float g_Time = 0;
+float g_Time = 0.2;
 
 void myInit()
 {
@@ -165,8 +165,9 @@ void myDisplay()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
 
-	drawRobotArm2(30 * sin(g_Time), 45 * sin(g_Time ), 40 * sin(g_Time));
+	//drawRobotArm2(30 * sin(g_Time), 45 * sin(g_Time ), 40 * sin(g_Time));
 
+	drawWindmill(sin(g_Time/30));
 	glutSwapBuffers();
 }
 

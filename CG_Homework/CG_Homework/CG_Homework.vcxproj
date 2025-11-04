@@ -19,13 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Homework1_WavingPlane.cpp" />
+    <ClCompile Include="Homework1_WavingPlane.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Homework2_RobotArm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyCube.h" />
     <ClInclude Include="MyPlane.h" />
+    <ClInclude Include="MyPyramid.h" />
+    <ClInclude Include="MyTarget.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="fshader_arm.glsl" />
     <None Include="fshader_plane.glsl" />
+    <None Include="vshader_arm.glsl" />
     <None Include="vshader_plane.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
