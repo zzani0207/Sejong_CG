@@ -60,23 +60,29 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 	cube.Draw(program);
 
 	// Second Joint
-	M =  Translate(0, 0.4, 0)* RotateX(90) * Scale(0.05, 0.22, 0.05);
+	CTM *= Translate(0, 0.4, 0) * RotateZ(ang2);          
+	M =  RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
 	// Lower Arm1
-	CTM *= Translate(0, 0.4, 0) * RotateZ(ang2);
-	M = Translate(0.1, 0.2, 0) * Scale(0.03, 0.4, 0.1);
+	M = Translate(0, 0.225, 0.07) * Scale(0.1, 0.55, 0.04);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
 	// Lower Arm2
-	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
+	M = Translate(0, 0.225, -0.07) * Scale(0.1, 0.55, 0.04);
+	glUniformMatrix4fv(uMat, 1, true, CTM * M);
+	cube.Draw(program);
+
+	// Third Joint
+	CTM *= Translate(0, 0.4, 0);
+	M = Translate(0, 0.05, 0) * RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
 	// Hand
-	CTM *= Translate(0, 0.4, 0) * RotateZ(ang3);
+	CTM *=  RotateZ(ang3);
 	M = Translate(0, 0.1, 0) * Scale(0.3, 0.2, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
@@ -86,7 +92,7 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 
 void computeAngle()
 {
-
+	printf("Current Target Pos: %.2f %.2f %.2f\n", target.currentPos.x, target.currentPos.y, target.currentPos.z);
 }
 
 

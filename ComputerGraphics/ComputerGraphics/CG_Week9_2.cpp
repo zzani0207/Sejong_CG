@@ -4,8 +4,6 @@
 #include "MyCube.h"
 #include "MyPyramid.h"
 
-#include <list>
-
 MyCube cube;
 MyPyramid pyramid;
 
@@ -14,7 +12,7 @@ GLuint uMat;
 
 mat4 g_Mat = mat4(1.0);
 
-float g_Time = 0.2;
+float g_Time = 0;
 
 void myInit()
 {
@@ -25,138 +23,116 @@ void myInit()
 	glUseProgram(program);
 }
 
-mat4 CTM;
-void drawRobotArm1(float ang1, float ang2, float ang3)
-{
+void drawRobotArm1(float ang1, float ang2, float ang3) {
 	GLuint uMat = glGetUniformLocation(program, "uMat");
 
-	mat4 M(1.0);
-	mat4 CTM(1.0);
+	mat4 M(1.0);					// model matrix
+	mat4 CTM(1.0);					// current transform matrix
 
-	//Base
-	CTM = Translate(0, -0.5, 0);
+	//pyramid.Draw(program);
+	//cube.Draw(program);
+
+	// Base
+	CTM = Translate(0, -0.4, 0);
 	M = Scale(0.3, 0.2, 0.2);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	pyramid.Draw(program);
 
-	//Uupper Arm
+	// Upper Arm
 	CTM *= RotateZ(ang1);
 	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
-	//Lower Arm
+	// Lower Arm
 	CTM *= Translate(0, 0.4, 0) * RotateZ(ang2);
 	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
-	//Hand
+	// Hand
 	CTM *= Translate(0, 0.4, 0) * RotateZ(ang3);
-	M = Translate(0, 0.05, 0) * Scale(0.2, 0.1, 0.1);
+	M = Translate(0, 0.05, 0) * Scale(0.3, 0.1, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
-}
-void drawRobotArm2(float ang1, float ang2, float ang3)
-{
-	GLuint uMat = glGetUniformLocation(program, "uMat");
 
-	mat4 M(1.0);
-	mat4 CTM(1.0);
+}
+
+#include <list>
+
+void drawRobotArm2(float ang1, float ang2, float ang3) {
+	GLuint uMat = glGetUniformLocation(program, "uMat");
+	mat4 M(1.0);					// model matrix
+	mat4 CTM(1.0);					// current transform matrix
 
 	std::list<mat4> MStack;
-	//Base
-	CTM = Translate(0, -0.5, 0);
+
+	//pyramid.Draw(program);
+	//cube.Draw(program);
+
+	// Base
+	CTM = Translate(0, -0.4, 0);
 	M = Scale(0.3, 0.2, 0.2);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	pyramid.Draw(program);
-
 	MStack.push_back(CTM);
 
-	//Uupper Arm
+	// Upper Arm
 	CTM *= RotateZ(ang1);
 	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
-
 	MStack.push_back(CTM);
-	//Lower Arm
+
+	// Lower Arm
 	CTM *= Translate(0, 0.4, 0) * RotateZ(ang2);
 	M = Translate(0, 0.05, 0) * Scale(0.4, 0.1, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
-
 	MStack.push_back(CTM);
 
-	//Hand1
+	// Hand 1
 	CTM *= Translate(0.2, 0.1, 0) * RotateZ(ang3);
 	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
-
 	MStack.push_back(CTM);
 
-	MStack.pop_back();
-	CTM = MStack.back();
-	MStack.pop_back();
-
-	//Hand2
-	CTM *= Translate(-0.2, 0.1, 0) * RotateZ(ang3);
-	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
-	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
-
-	MStack.push_back(CTM);
-	//Hand1 - middle
-	CTM *= Translate(0.4, 0.4, 0);
+	// Hand 1 - middle
+	CTM *= Translate(0.0, 0.4, 0);
 	M = Translate(0, 0.05, 0) * Scale(0.4, 0.1, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
-
 	MStack.push_back(CTM);
 
-	//Hand1 - right
+	// Hand 1 - RIGHT
 	CTM *= Translate(0.2, 0.1, 0);
-	M = Translate(0, 0.05, 0) * Scale(0.1, 0.4, 0.1);
+	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
-
 	MStack.push_back(CTM);
+
+	MStack.pop_back();
+
+	CTM = MStack.back();
+	// Hand 1 - LEFT
+	CTM *= Translate(-0.2, 0.1, 0);
+	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
+	glUniformMatrix4fv(uMat, 1, true, CTM * M);
+	cube.Draw(program);
+	MStack.push_back(CTM);
+
+	MStack.pop_back();
+
+	MStack.pop_back();
+
 	MStack.pop_back();
 	CTM = MStack.back();
-	MStack.pop_back();
-	//Hand1 - left
-	CTM *= Translate(-0.2, 0.1, 0);
-	M = Translate(0, 0.05, 0) * Scale(0.1, 0.4, 0.1);
+
+	// Hand 2
+	CTM *= Translate(-0.2, 0.1, 0) * RotateZ(-ang3);
+	M = Translate(0, 0.2, 0) * Scale(0.1, 0.4, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
-}
-void drawWindmill(float angle)
-{
-	GLuint uMat = glGetUniformLocation(program, "uMat");
-
-	mat4 M(1.0);
-	//Windmill Base
-	M = CTM * Scale(0.5, 1, 0.4);
-	glUniformMatrix4fv(uMat, 1, true, M);
-	pyramid.Draw(program);
-
-	//Blade
-	CTM = CTM * Translate(0, 0.20, 0.25) * RotateZ(g_Time * 30);
-
-	//Blade1
-	M = CTM * Scale(0.8, 0.05, 0.05);
-	glUniformMatrix4fv(uMat, 1, true, M);
-	cube.Draw(program);
-
-	//Blade2
-	M = CTM * RotateZ(90) * Scale(0.8, 0.05, 0.05);
-	glUniformMatrix4fv(uMat, 1, true, M);
-	cube.Draw(program);
-
-	//Joint
-	M = CTM * Scale(0.1, 0.1, 0.1);
-	glUniformMatrix4fv(uMat, 1, true, M);
 	cube.Draw(program);
 }
 
@@ -165,15 +141,18 @@ void myDisplay()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
 
-	//drawRobotArm2(30 * sin(g_Time), 45 * sin(g_Time ), 40 * sin(g_Time));
+	float ang1 = 30 * sin(g_Time * 2);
+	float ang2 = 30 * sin(g_Time * 4);
+	float ang3 = -30 * sin(g_Time * 6);
 
-	drawWindmill(sin(g_Time/30));
+	drawRobotArm2(ang1, ang2, ang3);
+
 	glutSwapBuffers();
 }
 
 void myIdle()
 {
-	g_Time += 0.01f;
+	g_Time += 0.016f;
 	Sleep(16);
 	glutPostRedisplay();
 }
