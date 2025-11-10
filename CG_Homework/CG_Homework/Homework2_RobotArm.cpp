@@ -92,45 +92,111 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 
 void computeAngle()
 {
-	// --- 1. 타겟 좌표 계산 ---
-	// 이 과제의 특이한 좌표계 설정으로 인해,
-	// 로봇팔이 쫓아야 할 2D 로컬 좌표는 
-	// target.GetPosition()이 반환하는 값의 x, y와 동일합니다.
-	vec3 targetWorldPos = target.GetPosition(g_time);
-	vec2 targetPos(targetWorldPos.x, targetWorldPos.y);
-
-	// --- 2. IK 계산 (2-Link Arm) ---
+	// --- 1. 상수 정의 ---
 	const float L1 = 0.4f;    // 첫 번째 팔 (Upper Arm) 길이
 	const float L2 = 0.45f;   // 두 번째 팔 (Lower Arm) 길이
+	const float L3 = 0.175f;  // 손의 X축 길이 (Scale(0.35) * 0.5)
 	const float PI = 3.1415926535f;
 
-	float tx = targetPos.x;
-	float ty = targetPos.y;
+	// (수정) ang3 관절 제한 (0도 ~ 90도)
+	const float MIN_ANG3_DEG = 0.0f;
+	const float MAX_ANG3_DEG = 90.0f;
 
-	float dist_sq = tx * tx + ty * ty;
+	// --- 2. 람다 함수 정의 ---
 
-	// --- 3. 각도 계산 (코사인 법칙) ---
-	// 타겟은 항상 팔이 닿는 거리에 있으므로, acos 입력값은 항상 -1과 1 사이입니다.
-	float cos_ang2 = (dist_sq - L1 * L1 - L2 * L2) / (2 * L1 * L2);
+	// 람다 1: 정운동학(FK) 함수 - "손 끝(Hand Tip)"의 위치를 반환
+	auto getEndEffector =
+		[&](float ang1_deg, float ang2_deg, float ang3_deg) -> vec3
+		{
+			float a1_rad = ang1_deg * PI / 180.0f;
+			float a2_rad = ang2_deg * PI / 180.0f;
+			float a3_rad = ang3_deg * PI / 180.0f;
 
-	// (안정성을 위해 아주 작은 부동소수점 오류만 방지)
-	if (cos_ang2 > 1.0f)  cos_ang2 = 1.0f;
-	if (cos_ang2 < -1.0f) cos_ang2 = -1.0f;
+			// 1. 손목(Wrist)의 위치 (P_wrist)
+			// Y축 기준 FK: glRotateZ(a) * Translate(0,L) = (-L*sin(a), L*cos(a))
+			float P_wrist_x = -L1 * sin(a1_rad) - L2 * sin(a1_rad + a2_rad);
+			float P_wrist_y = L1 * cos(a1_rad) + L2 * cos(a1_rad + a2_rad);
 
-	float ang2_rad = acos(cos_ang2); // "elbow up" 해 (0 ~ PI)
+			// 2. 손의 방향 (Hand Direction)
+			float a_total_rad = a1_rad + a2_rad + a3_rad;
 
-	// atan2를 사용한 안정적인 ang1 계산
-	float k1 = L1 + L2 * cos(ang2_rad);
-	float k2 = L2 * sin(ang2_rad);
-	float ang1_rad = atan2(ty, tx) - atan2(k2, k1);
+			// 손의 로컬 X축(1,0)이 월드에서 어느 방향을 가리키는지 계산
+			// glRotateZ(a)는 (1,0)을 (cos(a), sin(a))로 매핑
+			float Hand_dir_x = cos(a_total_rad);
+			float Hand_dir_y = sin(a_total_rad);
 
-	// --- 4. 최종 각도 변환 (Radians to Degrees) ---
-	ang1 = ang1_rad * 180.0f / PI;
-	ang2 = ang2_rad * 180.0f / PI;
+			// 3. 최종 "손 끝(Tip)"의 위치
+			float P_tip_x = P_wrist_x + L3 * Hand_dir_x;
+			float P_tip_y = P_wrist_y + L3 * Hand_dir_y;
 
-	// --- 5. ang3 (손목 각도) 계산 ---
-	// 손(Hand)이 로봇팔의 기준 평면(바닥)과 평행을 유지하도록 설정
-	ang3 = -(ang1 + ang2);
+			// 4. (롤백) 좌표계 보정 없이 원본 FK 값을 반환
+			return vec3(P_tip_x, P_tip_y, 0);
+		};
+
+	// 람다 2: 거리 계산 함수
+	auto computeDistance =
+		[](const vec3& p1, const vec3& p2) -> float
+		{
+			return sqrt((p1.x - p2.x) * (p1.x - p2.x) +
+				(p1.y - p2.y) * (p1.y - p2.y) +
+				(p1.z - p2.z) * (p1.z - p2.z));
+		};
+
+	// --- 3. 경사 하강법(Hill Climbing) 설정 ---
+	vec3 targetPos = target.GetPosition(g_time);
+	float delta = 0.1f;
+
+	// --- 4. 경사 하강법 루프 (ang3 클램프 0도~90도 적용) ---
+	while (computeDistance(getEndEffector(ang1, ang2, ang3), targetPos) >= 0.01f)
+	{
+		vec3 currentPos = getEndEffector(ang1, ang2, ang3);
+		float minDistance = computeDistance(currentPos, targetPos);
+		int minDistanceIndex = -1;
+
+		// 테스트할 6방향의 거리. 현재 거리(minDistance)로 초기화
+		float angleChangeDistance[6] = { minDistance, minDistance, minDistance,
+										 minDistance, minDistance, minDistance };
+
+		// 1. 6방향 테스트 (ang1, ang2는 항상 테스트)
+		angleChangeDistance[3] = computeDistance(getEndEffector(ang1, ang2 - delta, ang3), targetPos);
+		angleChangeDistance[2] = computeDistance(getEndEffector(ang1, ang2 + delta, ang3), targetPos);
+		angleChangeDistance[1] = computeDistance(getEndEffector(ang1 - delta, ang2, ang3), targetPos);
+		angleChangeDistance[0] = computeDistance(getEndEffector(ang1 + delta, ang2, ang3), targetPos);
+
+		// (핵심) ang3는 클램프 범위 내일 경우에만 테스트
+		if (ang3 + delta <= MAX_ANG3_DEG)
+			angleChangeDistance[4] = computeDistance(getEndEffector(ang1, ang2, ang3 + delta), targetPos);
+
+		if (ang3 - delta >= MIN_ANG3_DEG) // 0도보다 크거나 같을 때만 테스트
+			angleChangeDistance[5] = computeDistance(getEndEffector(ang1, ang2, ang3 - delta), targetPos);
+
+
+		// 2. 가장 가까워지는 방향 찾기
+		for (int i = 0; i < 6; i++)
+		{
+			if (minDistance > angleChangeDistance[i])
+			{
+				minDistance = angleChangeDistance[i];
+				minDistanceIndex = i;
+			}
+		}
+
+		// 3. 가장 좋은 방향으로 각도 수정
+		if (minDistanceIndex == -1)
+		{
+			break; // 더 이상 가까워질 수 없음
+		}
+
+		switch (minDistanceIndex)
+		{
+		case 0: ang1 += delta; break;
+		case 1: ang1 -= delta; break;
+		case 2: ang2 += delta; break;
+		case 3: ang2 -= delta; break;
+		case 4: ang3 += delta; break;
+		case 5: ang3 -= delta; break;
+		}
+	} // end of while
 }
 
 void myDisplay()
@@ -194,7 +260,6 @@ void myKeyboard(unsigned char c, int x, int y)
 		break;
 	}
 }
-
 
 int main(int argc, char** argv)
 {

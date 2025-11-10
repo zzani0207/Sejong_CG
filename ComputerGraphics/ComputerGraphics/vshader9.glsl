@@ -10,7 +10,7 @@ void main()
 {
 	gl_Position = uMat * vPosition;
 
-	gl_Position.z = -gl_Position.z;
+	gl_Position.z = -gl_Position.z * 0.01;
 
 	color = vColor;
 }

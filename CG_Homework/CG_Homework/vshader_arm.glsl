@@ -10,7 +10,6 @@ uniform vec4 uColor;
 void main()
 {
 	gl_Position = uMat * vPosition;
-
 	if (uColor.r < 0)
 		color = vColor;
 	else

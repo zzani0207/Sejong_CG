@@ -95,8 +95,8 @@
     <LibraryPath>C:\Sejong_CG\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>D:\AhnChanhwi\WallPaper\Sejong_Univ\CG_Directory\freeglut_and_glew\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\AhnChanhwi\WallPaper\Sejong_Univ\CG_Directory\freeglut_and_glew\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Sejong_CG\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Sejong_CG\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
