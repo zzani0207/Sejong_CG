@@ -4,6 +4,7 @@
 #include "MyCube.h"
 #include "MyPyramid.h"
 #include "MyTarget.h"
+#include <math.h>
 
 MyCube cube;
 MyPyramid pyramid;
@@ -40,7 +41,7 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 	// BASE
 	mat4 M(1.0);
 
-	M = Translate(0,0,0.075) * Scale(0.3, 0.2, 0.05);
+	M = Translate(0, 0, 0.075) * Scale(0.3, 0.2, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	pyramid.Draw(program);
 
@@ -49,7 +50,7 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 	pyramid.Draw(program);
 
 	// First Joint
-	M =  RotateX(90) * Scale(0.05, 0.22, 0.05) ;
+	M = RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
@@ -60,8 +61,8 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 	cube.Draw(program);
 
 	// Second Joint
-	CTM *= Translate(0, 0.4, 0) * RotateZ(ang2);          
-	M =  RotateX(90) * Scale(0.05, 0.22, 0.05);
+	CTM *= Translate(0, 0.4, 0) * RotateZ(ang2);
+	M = RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
@@ -76,14 +77,13 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 	cube.Draw(program);
 
 	// Third Joint
-	CTM *= Translate(0, 0.4, 0);
-	M = Translate(0, 0.05, 0) * RotateX(90) * Scale(0.05, 0.22, 0.05);
+	CTM *= Translate(0, 0.45, 0) * RotateZ(ang3);
+	M = RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
-	// Hand
-	CTM *=  RotateZ(ang3);
-	M = Translate(0, 0.1, 0) * Scale(0.3, 0.2, 0.1);
+	// Hands
+	M = Scale(0.35, 0.15, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	cube.Draw(program);
 
@@ -92,9 +92,46 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 
 void computeAngle()
 {
-	printf("Current Target Pos: %.2f %.2f %.2f\n", target.currentPos.x, target.currentPos.y, target.currentPos.z);
-}
+	// --- 1. 타겟 좌표 계산 ---
+	// 이 과제의 특이한 좌표계 설정으로 인해,
+	// 로봇팔이 쫓아야 할 2D 로컬 좌표는 
+	// target.GetPosition()이 반환하는 값의 x, y와 동일합니다.
+	vec3 targetWorldPos = target.GetPosition(g_time);
+	vec2 targetPos(targetWorldPos.x, targetWorldPos.y);
 
+	// --- 2. IK 계산 (2-Link Arm) ---
+	const float L1 = 0.4f;    // 첫 번째 팔 (Upper Arm) 길이
+	const float L2 = 0.45f;   // 두 번째 팔 (Lower Arm) 길이
+	const float PI = 3.1415926535f;
+
+	float tx = targetPos.x;
+	float ty = targetPos.y;
+
+	float dist_sq = tx * tx + ty * ty;
+
+	// --- 3. 각도 계산 (코사인 법칙) ---
+	// 타겟은 항상 팔이 닿는 거리에 있으므로, acos 입력값은 항상 -1과 1 사이입니다.
+	float cos_ang2 = (dist_sq - L1 * L1 - L2 * L2) / (2 * L1 * L2);
+
+	// (안정성을 위해 아주 작은 부동소수점 오류만 방지)
+	if (cos_ang2 > 1.0f)  cos_ang2 = 1.0f;
+	if (cos_ang2 < -1.0f) cos_ang2 = -1.0f;
+
+	float ang2_rad = acos(cos_ang2); // "elbow up" 해 (0 ~ PI)
+
+	// atan2를 사용한 안정적인 ang1 계산
+	float k1 = L1 + L2 * cos(ang2_rad);
+	float k2 = L2 * sin(ang2_rad);
+	float ang1_rad = atan2(ty, tx) - atan2(k2, k1);
+
+	// --- 4. 최종 각도 변환 (Radians to Degrees) ---
+	ang1 = ang1_rad * 180.0f / PI;
+	ang2 = ang2_rad * 180.0f / PI;
+
+	// --- 5. ang3 (손목 각도) 계산 ---
+	// 손(Hand)이 로봇팔의 기준 평면(바닥)과 평행을 유지하도록 설정
+	ang3 = -(ang1 + ang2);
+}
 
 void myDisplay()
 {

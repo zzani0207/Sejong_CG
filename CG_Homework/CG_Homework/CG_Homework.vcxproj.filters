@@ -49,5 +49,6 @@
     <None Include="vshader_arm.glsl">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="Homework2_Robot" />
   </ItemGroup>
 </Project>
