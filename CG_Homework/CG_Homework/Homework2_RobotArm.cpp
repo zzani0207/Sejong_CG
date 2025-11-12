@@ -28,7 +28,7 @@ void myInit()
 	cube.Init();
 	pyramid.Init();
 
-	program = InitShader("vshader_arm.glsl", "fshader_arm.glsl");
+	program = InitShader("vshader.glsl", "fshader.glsl");
 	glUseProgram(program);
 }
 
@@ -41,11 +41,11 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 	// BASE
 	mat4 M(1.0);
 
-	M = Translate(0, 0, 0.075) * Scale(0.3, 0.2, 0.05);
+	M = Translate(0, 0, 0.075) * Scale(0.3, 0.3, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	pyramid.Draw(program);
 
-	M = Translate(0, 0, -0.075) * Scale(0.3, 0.2, 0.05);
+	M = Translate(0, 0, -0.075) * Scale(0.3, 0.3, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
 	pyramid.Draw(program);
 
@@ -92,19 +92,15 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 
 void computeAngle()
 {
-	// --- 1. 상수 정의 ---
-	const float L1 = 0.4f;    // 첫 번째 팔 (Upper Arm) 길이
-	const float L2 = 0.45f;   // 두 번째 팔 (Lower Arm) 길이
-	const float L3 = 0.175f;  // 손의 X축 길이 (Scale(0.35) * 0.5)
-	const float PI = 3.1415926535f;
+	const float L1 = 0.4f;    // Length of Upper Arm
+	const float L2 = 0.45f;   // Length of Lower Arm
+	const float L3 = 0.175f;  // Length of Hand X axis
+	const float PI = 3.141592f;
+	const float MIN_ANG3_DEG = 0.0f; // ang3 최소 각도
+	const float MAX_ANG3_DEG = 90.0f;  // ang3 최대 각도
 
-	// (수정) ang3 관절 제한 (0도 ~ 90도)
-	const float MIN_ANG3_DEG = 0.0f;
-	const float MAX_ANG3_DEG = 90.0f;
-
-	// --- 2. 람다 함수 정의 ---
-
-	// 람다 1: 정운동학(FK) 함수 - "손 끝(Hand Tip)"의 위치를 반환
+	// 보조함수 정의
+	// FK 구현
 	auto getEndEffector =
 		[&](float ang1_deg, float ang2_deg, float ang3_deg) -> vec3
 		{
@@ -112,91 +108,65 @@ void computeAngle()
 			float a2_rad = ang2_deg * PI / 180.0f;
 			float a3_rad = ang3_deg * PI / 180.0f;
 
-			// 1. 손목(Wrist)의 위치 (P_wrist)
-			// Y축 기준 FK: glRotateZ(a) * Translate(0,L) = (-L*sin(a), L*cos(a))
+			// 손목 위치
 			float P_wrist_x = -L1 * sin(a1_rad) - L2 * sin(a1_rad + a2_rad);
 			float P_wrist_y = L1 * cos(a1_rad) + L2 * cos(a1_rad + a2_rad);
 
-			// 2. 손의 방향 (Hand Direction)
+			// 손의 방향 벡터
 			float a_total_rad = a1_rad + a2_rad + a3_rad;
-
-			// 손의 로컬 X축(1,0)이 월드에서 어느 방향을 가리키는지 계산
-			// glRotateZ(a)는 (1,0)을 (cos(a), sin(a))로 매핑
 			float Hand_dir_x = cos(a_total_rad);
 			float Hand_dir_y = sin(a_total_rad);
 
-			// 3. 최종 "손 끝(Tip)"의 위치
+			// 최종 손 끝 위치
 			float P_tip_x = P_wrist_x + L3 * Hand_dir_x;
 			float P_tip_y = P_wrist_y + L3 * Hand_dir_y;
 
-			// 4. (롤백) 좌표계 보정 없이 원본 FK 값을 반환
 			return vec3(P_tip_x, P_tip_y, 0);
 		};
 
-	// 람다 2: 거리 계산 함수
+	// 두 점 사이의 거리 계산
 	auto computeDistance =
 		[](const vec3& p1, const vec3& p2) -> float
 		{
-			return sqrt((p1.x - p2.x) * (p1.x - p2.x) +
-				(p1.y - p2.y) * (p1.y - p2.y) +
-				(p1.z - p2.z) * (p1.z - p2.z));
+			return length(p1 - p2);
 		};
 
-	// --- 3. 경사 하강법(Hill Climbing) 설정 ---
+	// 경사 하강법 사용
 	vec3 targetPos = target.GetPosition(g_time);
-	float delta = 0.1f;
+	float delta = 0.1f; // 각도 변화량
 
-	// --- 4. 경사 하강법 루프 (ang3 클램프 0도~90도 적용) ---
 	while (computeDistance(getEndEffector(ang1, ang2, ang3), targetPos) >= 0.01f)
 	{
-		vec3 currentPos = getEndEffector(ang1, ang2, ang3);
-		float minDistance = computeDistance(currentPos, targetPos);
-		int minDistanceIndex = -1;
+		float currentDist = computeDistance(getEndEffector(ang1, ang2, ang3), targetPos);
+		float bestAng1 = ang1, bestAng2 = ang2, bestAng3 = ang3;
+		float minDistance = currentDist;
 
-		// 테스트할 6방향의 거리. 현재 거리(minDistance)로 초기화
-		float angleChangeDistance[6] = { minDistance, minDistance, minDistance,
-										 minDistance, minDistance, minDistance };
-
-		// 1. 6방향 테스트 (ang1, ang2는 항상 테스트)
-		angleChangeDistance[3] = computeDistance(getEndEffector(ang1, ang2 - delta, ang3), targetPos);
-		angleChangeDistance[2] = computeDistance(getEndEffector(ang1, ang2 + delta, ang3), targetPos);
-		angleChangeDistance[1] = computeDistance(getEndEffector(ang1 - delta, ang2, ang3), targetPos);
-		angleChangeDistance[0] = computeDistance(getEndEffector(ang1 + delta, ang2, ang3), targetPos);
-
-		// (핵심) ang3는 클램프 범위 내일 경우에만 테스트
-		if (ang3 + delta <= MAX_ANG3_DEG)
-			angleChangeDistance[4] = computeDistance(getEndEffector(ang1, ang2, ang3 + delta), targetPos);
-
-		if (ang3 - delta >= MIN_ANG3_DEG) // 0도보다 크거나 같을 때만 테스트
-			angleChangeDistance[5] = computeDistance(getEndEffector(ang1, ang2, ang3 - delta), targetPos);
-
-
-		// 2. 가장 가까워지는 방향 찾기
-		for (int i = 0; i < 6; i++)
+		// 각 관절에 대해 최적의 변화 탐색
+		for (float da : { -delta, delta })
 		{
-			if (minDistance > angleChangeDistance[i])
+			// ang1 테스트
+			float dist1 = computeDistance(getEndEffector(ang1 + da, ang2, ang3), targetPos);
+			if (dist1 < minDistance) { minDistance = dist1; bestAng1 = ang1 + da; }
+
+			// ang2 테스트
+			float dist2 = computeDistance(getEndEffector(ang1, ang2 + da, ang3), targetPos);
+			if (dist2 < minDistance) { minDistance = dist2; bestAng2 = ang2 + da; }
+
+			// ang3 테스트 
+			float nextAng3 = ang3 + da;
+			if (nextAng3 >= MIN_ANG3_DEG && nextAng3 <= MAX_ANG3_DEG)
 			{
-				minDistance = angleChangeDistance[i];
-				minDistanceIndex = i;
+				float dist3 = computeDistance(getEndEffector(ang1, ang2, nextAng3), targetPos);
+				if (dist3 < minDistance) { minDistance = dist3; bestAng3 = nextAng3; }
 			}
 		}
 
-		// 3. 가장 좋은 방향으로 각도 수정
-		if (minDistanceIndex == -1)
-		{
-			break; // 더 이상 가까워질 수 없음
-		}
+		if (minDistance >= currentDist) break;
 
-		switch (minDistanceIndex)
-		{
-		case 0: ang1 += delta; break;
-		case 1: ang1 -= delta; break;
-		case 2: ang2 += delta; break;
-		case 3: ang2 -= delta; break;
-		case 4: ang3 += delta; break;
-		case 5: ang3 -= delta; break;
-		}
-	} // end of while
+		ang1 = bestAng1;
+		ang2 = bestAng2;
+		ang3 = bestAng3;
+	}
 }
 
 void myDisplay()
