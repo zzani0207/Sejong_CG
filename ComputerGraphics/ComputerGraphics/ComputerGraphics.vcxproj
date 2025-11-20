@@ -134,7 +134,10 @@
     <ClCompile Include="CG_Week11_1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="CG_Week11_2.cpp" />
+    <ClCompile Include="CG_Week11_2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CG_Week12_1.cpp" />
     <ClCompile Include="CG_Week3.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -152,6 +155,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <None Include="fphong12.glsl" />
+    <None Include="fshader12.glsl" />
     <None Include="fshader8.glsl">
       <FileType>Document</FileType>
     </None>
@@ -181,6 +186,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <None Include="fshader9.glsl" />
+    <None Include="vphong12.glsl" />
+    <None Include="vshader12.glsl" />
     <None Include="vshader9.glsl" />
   </ItemGroup>
   <ItemGroup>
@@ -194,8 +201,10 @@
     <ClInclude Include="MyColorCube.h" />
     <ClInclude Include="MyColorCylinder.h" />
     <ClInclude Include="MyCube.h" />
+    <ClInclude Include="MyCube2.h" />
     <ClInclude Include="MyPyramid.h" />
     <ClInclude Include="MySphere.h" />
+    <ClInclude Include="MySphere2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
