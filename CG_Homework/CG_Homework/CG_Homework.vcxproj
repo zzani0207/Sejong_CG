@@ -22,9 +22,13 @@
     <ClCompile Include="Homework1_WavingPlane.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Homework2_RobotArm.cpp" />
+    <ClCompile Include="Homework2_RobotArm.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Homework3\Homework3_MazeNavigator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Homework3\MyUtil.h" />
     <ClInclude Include="MyCube.h" />
     <ClInclude Include="MyPlane.h" />
     <ClInclude Include="MyPyramid.h" />
@@ -33,9 +37,14 @@
   <ItemGroup>
     <None Include="fshader_arm.glsl" />
     <None Include="fshader_plane.glsl" />
-    <None Include="Homework2_Robot" />
+    <None Include="Homework3\fshader_maze.glsl" />
+    <None Include="Homework3\vshader_maze.glsl" />
     <None Include="vshader_arm.glsl" />
     <None Include="vshader_plane.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Homework3\maze.txt" />
+    <Text Include="Homework3\maze2.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
