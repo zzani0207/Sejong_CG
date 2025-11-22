@@ -1,15 +1,15 @@
-
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <vgl.h>
 #include <InitShader.h>
 #include "MyCube.h"
 #include "MyUtil.h"
+#include <stdbool.h>
 
 #include <vec.h>
 #include <mat.h>
 
-#define MAZE_FILE	"maze.txt"
+#define MAZE_FILE	"maze2.txt"
 
 MyCube cube;
 GLuint program;
@@ -29,10 +29,25 @@ int MazeSize;
 char maze[255][255] = { 0 };
 
 float cameraSpeed = 0.1;
+float rotationSpeed = 8.0;
+float cameraAngle = 0;
+
+bool isKeyPressed = false;
+bool isCollided = false;
+bool isMoving = false;
+vec3 collisionPos;
+
 
 float g_time = 0;
 
+void getIndexFromPosition(const vec3& position, int& i, int& j)
+{
+	float unit = 1;
+	i = round(position.x + MazeSize / 2.0 - unit / 2);
+	j = round(position.z + MazeSize / 2.0 - unit / 2);
+}
 
+// 인덱스(i, j)로부터 월드 좌표 얻기
 inline vec3 getPositionFromIndex(int i, int j)
 {
 	float unit = 1;
@@ -42,10 +57,11 @@ inline vec3 getPositionFromIndex(int i, int j)
 	return leftTopPosition + i * xDir + j * zDir;
 }
 
+// 미로 파일 로드
 void LoadMaze()
 {
 	FILE* file = fopen(MAZE_FILE, "r");
-	if(file == NULL)
+	if (file == NULL)
 	{
 		printf("Cannot open maze file!\n");
 		return;
@@ -68,13 +84,65 @@ void LoadMaze()
 	fclose(file);
 }
 
+
+bool checkIsWall(vec3 position)
+{
+	int i, j;
+
+	getIndexFromPosition(position, i, j);
+
+	float threshold = 0.7f;
+
+	isCollided = false;
+
+	for (int di = -1; di <= 1; di++)
+	{
+		for (int dj = -1; dj <= 1; dj++)
+		{
+			int ni = i + di;
+			int nj = j + dj;
+
+			if (ni < 0 || ni >= MazeSize || nj < 0 || nj >= MazeSize)
+				continue;
+
+			if (maze[ni][nj] == '*')
+			{
+				vec3 wallPos = getPositionFromIndex(ni, nj);
+
+				float distGapX = abs(position.x - wallPos.x);
+				float distGapZ = abs(position.z - wallPos.z);
+				if (distGapX < threshold && distGapZ < threshold)
+				{
+					//isCollided = true;
+					//collisionPos = wallPos;
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
+}
+// 미로 벽 생성
 void DrawMaze()
 {
+	float Threshold = 0.7f + cameraSpeed + 0.01f;
+
 	for (int j = 0; j < MazeSize; j++)
 		for (int i = 0; i < MazeSize; i++)
 			if (maze[i][j] == '*')
 			{
-				vec3 color = vec3(i / (float)MazeSize, j / (float)MazeSize, 1);
+				vec3 color;
+				vec3 wallPos = getPositionFromIndex(i, j);
+
+				float distGpaX = abs(cameraPos.x - wallPos.x);
+				float distGpaZ = abs(cameraPos.z - wallPos.z);
+
+				if (distGpaX < Threshold && distGpaZ < Threshold&& isKeyPressed)
+					color = vec3(1, 0, 0);
+				else
+					color = vec3(i / (float)MazeSize, j / (float)MazeSize, 1);
+
 				mat4 ModelMat = Translate(getPositionFromIndex(i, j));
 				glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 				glUniform4f(uColor, color.x, color.y, color.z, 1);
@@ -96,6 +164,7 @@ void DrawGrid()
 	float w = MazeSize;
 	float h = MazeSize;
 
+	// 가로 격자
 	for (int i = 0; i < n; i++)
 	{
 		mat4 m = Translate(0, -0.5, -h / 2 + h / n * i) * Scale(w, 0.02, 0.02);
@@ -103,6 +172,8 @@ void DrawGrid()
 		glUniform4f(uColor, 1, 1, 1, 1);
 		cube.Draw(program);
 	}
+
+	// 세로 격자
 	for (int i = 0; i < n; i++)
 	{
 		mat4 m = Translate(-w / 2 + w / n * i, -0.5, 0) * Scale(0.02, 0.02, h);
@@ -112,18 +183,17 @@ void DrawGrid()
 	}
 }
 
-
 void drawCamera()
 {
 	float cameraSize = 0.5;
 
-	mat4 ModelMat = Translate(cameraPos) * Scale(vec3(cameraSize));
+	mat4 ModelMat = Translate(cameraPos) * RotateY(cameraAngle) * Scale(vec3(cameraSize));
 	glUseProgram(program);
 	glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 	glUniform4f(uColor, 0, 1, 0, 1);
 	cube.Draw(program);
 
-	ModelMat = Translate(cameraPos + viewDirection * cameraSize / 2) * Scale(vec3(cameraSize / 2));
+	ModelMat = Translate(cameraPos + viewDirection * cameraSize / 2) * RotateY(cameraAngle) * Scale(vec3(cameraSize / 2));
 	glUseProgram(program);
 	glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 	glUniform4f(uColor, 0, 1, 0, 1);
@@ -145,7 +215,6 @@ void drawGoal()
 	glUniform4f(uColor, 0, 0, 0, 0);
 	cube.Draw(program);
 }
-
 
 void drawScene(bool bDrawCamera = true)
 {
@@ -199,18 +268,72 @@ void display()
 	glutSwapBuffers();
 }
 
+void cameraRotate(float angle)
+{
+	cameraAngle += angle;
+	viewDirection.x = -sin(cameraAngle * 3.141592 / 180.0f);
+	viewDirection.z = -cos(cameraAngle * 3.141592 / 180.0f);
+}
+
 void idle()
 {
 	g_time += 1;
 
-	if ((GetAsyncKeyState('A') & 0x8000) == 0x8000)		// if "A" key is pressed	: Go Left
-		cameraPos += cameraSpeed * vec3(-1, 0, 0);
-	if ((GetAsyncKeyState('D') & 0x8000) == 0x8000)		// if "D" key is pressed	: Go Right
-		cameraPos += cameraSpeed * vec3(1, 0, 0);
+	vec3 nextPos = vec3(0, 0, 0);
+	isKeyPressed = false;
+
+	if ((GetAsyncKeyState('A') & 0x8000) == 0x8000)		// if "A" key is pressed	: Turn Left
+	{
+		isKeyPressed = true;
+		cameraRotate(rotationSpeed);
+	}
+	if ((GetAsyncKeyState('D') & 0x8000) == 0x8000)		// if "D" key is pressed	: Turn Right
+	{
+		isKeyPressed = true;
+		cameraRotate(-rotationSpeed);
+	}
 	if ((GetAsyncKeyState('W') & 0x8000) == 0x8000)		// if "W" key is pressed	: Go Forward
-		cameraPos += cameraSpeed * vec3(0, 0, -1);
+	{
+		isMoving = true;
+		isKeyPressed = true;
+		nextPos += cameraSpeed * normalize(viewDirection);
+	}
 	if ((GetAsyncKeyState('S') & 0x8000) == 0x8000)		// if "S" key is pressed	: Go Backward
-		cameraPos += cameraSpeed * vec3(0, 0, 1);
+	{
+		isMoving = true;
+		isKeyPressed = true;
+		nextPos -= cameraSpeed * normalize(viewDirection);
+	}
+
+	if (isKeyPressed && (length(nextPos) > 0))
+	{
+		vec3 nextPosX = cameraPos;
+		nextPosX.x += nextPos.x;
+
+		if (!checkIsWall(nextPosX))
+			cameraPos.x = nextPosX.x;
+
+		vec3 nextPosZ = cameraPos;
+		nextPosZ.z += nextPos.z;
+
+		if (!checkIsWall(nextPosZ))
+			cameraPos.z = nextPosZ.z;
+
+	}
+
+	//if(!isKeyPressed&& isMoving)
+	//{
+	//	isMoving = false;
+	//	isCollided = false;
+
+	//	int i, j;
+	//	getIndexFromPosition(cameraPos, i, j);
+	//	if(maze[i][j] != '*')
+	//		cameraPos = getPositionFromIndex(i, j);
+	//}
+
+	//if(!checkIsWall(nextPos))
+	//	cameraPos = nextPos;
 
 	Sleep(16);											// for vSync
 	glutPostRedisplay();
@@ -223,7 +346,6 @@ void reshape(int wx, int wy)
 	wHeight = wy;
 	glutPostRedisplay();
 }
-
 
 int main(int argc, char** argv)
 {
@@ -240,15 +362,14 @@ int main(int argc, char** argv)
 	//printf("OpenGL %s, GLSL %s\n", glGetString(GL_VERSION),
 		//glGetString(GL_SHADING_LANGUAGE_VERSION));
 	printf("A Maze Navigator\n");
-	printf("Programming Assignment #3 for Computer Graphics.Department of Software, Sejong University\n\n");
-	printf("----------------------------------------------------------------\n");
+	printf("Programming Assignment #3 for Computer Graphics.Department of Software, Sejong University\n");
+	printf("\n----------------------------------------------------------------\n");
 	printf("`W' key: Go Forward\n");
 	printf("`S' key : Go Backward\n");
 	printf("'A' key : Turn Left\n");
 	printf("'D' key : Turn Right\n");
 	printf("'Q' key : Find Shortest Path to the Goal\n");
 	printf("'Spacebar' : Start following the Path\n");
-	printf("Programming Assignment #3 for Computer Graphics.Department of Software, Sejong University\n");
 	printf("\n----------------------------------------------------------------\n");
 
 	myInit();

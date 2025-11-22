@@ -21,7 +21,7 @@
     <ClCompile Include="Homework2_RobotArm.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Homework3\Homework3_MazeNavigator.cpp">
+    <ClCompile Include="Homework3_MazeNavigator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,7 +38,7 @@
     <ClInclude Include="MyTarget.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Homework3\MyUtil.h">
+    <ClInclude Include="MyUtil.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,18 +55,18 @@
     <None Include="vshader_arm.glsl">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="Homework3\fshader_maze.glsl">
+    <None Include="vshader_maze.glsl">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="Homework3\vshader_maze.glsl">
+    <None Include="fshader_maze.glsl">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Homework3\maze.txt">
+    <Text Include="maze2.txt">
       <Filter>리소스 파일</Filter>
     </Text>
-    <Text Include="Homework3\maze2.txt">
+    <Text Include="maze.txt">
       <Filter>리소스 파일</Filter>
     </Text>
   </ItemGroup>
