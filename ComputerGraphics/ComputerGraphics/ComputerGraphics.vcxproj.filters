@@ -57,6 +57,9 @@
     <ClCompile Include="CG_Week12_1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="CG_Week13_2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="vshader.glsl">
@@ -95,6 +98,12 @@
     <None Include="vshader12.glsl">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="vphong13.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fphong13.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyColorCube.h">
@@ -118,5 +127,22 @@
     <ClInclude Include="MyCube2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Targa.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="earthmap_cld.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="earthmap_dif.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="earthmap_light.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="earthmap_spec.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

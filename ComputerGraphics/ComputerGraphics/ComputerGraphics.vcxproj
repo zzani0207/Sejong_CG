@@ -137,7 +137,13 @@
     <ClCompile Include="CG_Week11_2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="CG_Week12_1.cpp" />
+    <ClCompile Include="CG_Week12_1.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CG_Week13_2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CG_Week3.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -156,6 +162,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <None Include="fphong12.glsl" />
+    <None Include="fphong13.glsl" />
     <None Include="fshader12.glsl" />
     <None Include="fshader8.glsl">
       <FileType>Document</FileType>
@@ -187,6 +194,7 @@
     </ClCompile>
     <None Include="fshader9.glsl" />
     <None Include="vphong12.glsl" />
+    <None Include="vphong13.glsl" />
     <None Include="vshader12.glsl" />
     <None Include="vshader9.glsl" />
   </ItemGroup>
@@ -205,6 +213,13 @@
     <ClInclude Include="MyPyramid.h" />
     <ClInclude Include="MySphere.h" />
     <ClInclude Include="MySphere2.h" />
+    <ClInclude Include="Targa.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="earthmap_cld.tga" />
+    <Image Include="earthmap_dif.tga" />
+    <Image Include="earthmap_light.tga" />
+    <Image Include="earthmap_spec.tga" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -96,7 +96,7 @@ mat4 myPerspective(float fovy, float aspectRatio, float zNear, float zFar)
 void myInit()
 {
 	cube.Init();
-	sphere.Init(20, 20);
+	sphere.Init(20, 20, vec4(1, 1, 0, 1));
 
 	program = InitShader("vshader12.glsl", "fshader12.glsl");
 	prog_phong = InitShader("vphong12.glsl", "fphong12.glsl");
@@ -148,6 +148,7 @@ float g_Time = 0;
 
 void display()
 {
+	glClearColor(0.1, 0.1, 0.1, 1);
 	glEnable(GL_DEPTH_TEST);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
@@ -172,7 +173,7 @@ void display()
 	GLuint uProjMat = glGetUniformLocation(prog_phong, "uProjMat");
 	GLuint uModelMat = glGetUniformLocation(prog_phong, "uModelMat");
 
-	mat4 ModelMat = RotateY(g_Time * 90);
+	mat4 ModelMat = RotateY(g_Time * 90) * Scale(0.7, 0.7 , 0.7);
 	glUniformMatrix4fv(uProjMat, 1, GL_TRUE, ProjMat);
 	glUniformMatrix4fv(uModelMat, 1, GL_TRUE, ViewMat * ModelMat);
 
