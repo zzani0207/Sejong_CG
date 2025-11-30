@@ -379,7 +379,7 @@ void display()
 	float aspectRatio = vWidth / vHeight;
 	float w = aspectRatio * h;
 	mat4 ViewMat = myLookAt(cameraPos, cameraPos + viewDirection, vec3(0, 1, 0));
-	mat4 ProjMat = myPerspective(45, aspectRatio, 0.01, 20);
+	mat4 ProjMat = myPerspective(90, aspectRatio, 0.01, 20);
 
 	g_Mat = ProjMat * ViewMat;
 	drawScene(false);							// drawing scene except the camera

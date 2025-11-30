@@ -25,7 +25,10 @@
     <ClCompile Include="Homework2_RobotArm.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Homework3_MazeNavigator.cpp" />
+    <ClCompile Include="Homework3_MazeNavigator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Homework4_ObjModelViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCube.h" />
@@ -33,11 +36,16 @@
     <ClInclude Include="MyPyramid.h" />
     <ClInclude Include="MyTarget.h" />
     <ClInclude Include="MyUtil.h" />
+    <ClInclude Include="MyObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="fphong.glsl" />
+    <None Include="fshader.glsl" />
     <None Include="fshader_arm.glsl" />
     <None Include="fshader_maze.glsl" />
     <None Include="fshader_plane.glsl" />
+    <None Include="vphong.glsl" />
+    <None Include="vshader.glsl" />
     <None Include="vshader_arm.glsl" />
     <None Include="vshader_maze.glsl" />
     <None Include="vshader_plane.glsl" />
