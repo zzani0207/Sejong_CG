@@ -3,10 +3,12 @@
 in  vec4 vPosition;
 in  vec4 vColor;
 in  vec3 vNormal;
+in vec2 vTexCoord;
 
 out vec3 N3;
 out vec3 L3;
 out vec3 V3;
+out vec2 TexCoord;
 
 uniform mat4 uModelMat;
 uniform mat4 uProjMat;
@@ -30,5 +32,5 @@ void main()
 	L3 = normalize(L.xyz);
 	V3 = normalize(V.xyz);
 
-
+	TexCoord = vTexCoord;
 }

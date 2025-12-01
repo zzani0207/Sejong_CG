@@ -71,7 +71,34 @@ void myInit()
 	phong_prog = InitShader("vphong13.glsl", "fphong13.glsl");
 	glUseProgram(phong_prog);
 
+	const int width = 512;
+	const int height = 512;
+
+	GLubyte img[height][width][3];
+	for (int y = 0; y < height; y++)
+		for (int x = 0; x < width; x++)
+		{
+			GLubyte c = 0;
+			if ((x/8 + y/8) % 2 == 0)
+				c = 255;
+			img[y][x][0] = c;
+			img[y][x][1] = 0;
+			img[y][x][2] = c;
+		}
+	GLuint texture;
+	glGenTextures(1, &texture);
+	glActiveTexture(GL_TEXTURE0);
+
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0,
+		GL_RGB, GL_UNSIGNED_BYTE, img);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
 }
+
 
 void display()
 {

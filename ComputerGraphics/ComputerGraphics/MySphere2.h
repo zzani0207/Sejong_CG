@@ -8,6 +8,7 @@ struct MySphereVertex
 	vec4 position;
 	vec4 color;
 	vec3 normal;
+	vec2 texCoord;
 };
 
 class MySphere
@@ -73,6 +74,12 @@ GLuint MySphere::Init(int la_slice, int lo_slice, vec4 color)
 			vec3 c(r2 * cos(db * (j + 1)), y2, r2 * sin(db * (j + 1)));
 			vec3 d(r1 * cos(db * (j + 1)), y1, r1 * sin(db * (j + 1)));
 
+			vec2 ta = vec2(1-(float)j / lo_slice, 1-(float)i / la_slice);
+			vec2 tb = vec2(1-(float)j / lo_slice, 1-(float)(i + 1) / la_slice);
+			vec2 tc = vec2(1-(float)(j + 1) / lo_slice,1- (float)(i + 1) / la_slice);
+			vec2 td = vec2(1-(float)(j + 1) / lo_slice, 1-(float)i / la_slice);
+
+
 			if (i != lo_slice - 1)
 			{
 				vec3 p = c - a;
@@ -80,9 +87,9 @@ GLuint MySphere::Init(int la_slice, int lo_slice, vec4 color)
 				vec3 n = normalize(cross(p, q));
 
 
-				Vertices[cur].position = a;	Vertices[cur].color = color; Vertices[cur].normal = a; cur++;
-				Vertices[cur].position = c;	Vertices[cur].color = color; Vertices[cur].normal = c; cur++;
-				Vertices[cur].position = b;	Vertices[cur].color = color; Vertices[cur].normal = b; cur++;
+				Vertices[cur].position = a;	Vertices[cur].color = color; Vertices[cur].normal = a; cur++; Vertices[cur].texCoord = ta;
+				Vertices[cur].position = c;	Vertices[cur].color = color; Vertices[cur].normal = c; cur++; Vertices[cur].texCoord = tc;
+				Vertices[cur].position = b;	Vertices[cur].color = color; Vertices[cur].normal = b; cur++; Vertices[cur].texCoord = tb;
 			}
 			if (i != 0)
 			{
@@ -91,9 +98,9 @@ GLuint MySphere::Init(int la_slice, int lo_slice, vec4 color)
 				vec3 n = normalize(cross(p, q));
 
 
-				Vertices[cur].position = c;	Vertices[cur].color = color; Vertices[cur].normal = c; cur++;
-				Vertices[cur].position = a;	Vertices[cur].color = color; Vertices[cur].normal = a; cur++;
-				Vertices[cur].position = d;	Vertices[cur].color = color; Vertices[cur].normal = d; cur++;
+				Vertices[cur].position = c;	Vertices[cur].color = color; Vertices[cur].normal = c; cur++; Vertices[cur].texCoord = tc;
+				Vertices[cur].position = a;	Vertices[cur].color = color; Vertices[cur].normal = a; cur++; Vertices[cur].texCoord = ta;
+				Vertices[cur].position = d;	Vertices[cur].color = color; Vertices[cur].normal = d; cur++; Vertices[cur].texCoord = td;
 			}
 		}
 	}
@@ -122,6 +129,11 @@ void MySphere::SetPositionAndOtherAttributes(GLuint program)
 	GLuint vNormal = glGetAttribLocation(program, "vNormal");
 	glEnableVertexAttribArray(vNormal);
 	glVertexAttribPointer(vNormal, 3, GL_FLOAT, GL_FALSE, sizeof(MySphereVertex), BUFFER_OFFSET(sizeof(vec4) + sizeof(vec4)));
+
+	GLuint vTexCoord = glGetAttribLocation(program, "vTexCoord");
+	glEnableVertexAttribArray(vTexCoord);
+	glVertexAttribPointer(vTexCoord, 2, GL_FLOAT, GL_FALSE, sizeof(MySphereVertex), BUFFER_OFFSET(sizeof(vec4) + sizeof(vec4) + sizeof(vec3)));
+
 }
 
 
