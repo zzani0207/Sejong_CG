@@ -29,5 +29,5 @@ void main()
     vec4 V = vec4(0, 0, 0, 1) - P;
     V3 = normalize(V.xyz);
 
-    color = vec4(1.0, 1.0, 1.0, 1.0);
+    color = vColor;
 }

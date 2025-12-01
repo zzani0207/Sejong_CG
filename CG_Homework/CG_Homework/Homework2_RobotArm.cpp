@@ -6,9 +6,9 @@
 #include "MyTarget.h"
 #include <math.h>
 
-MyCube cube;
+MyCube axis;
 MyPyramid pyramid;
-MyTarget target(&cube);
+MyTarget target(&axis);
 
 GLuint program;
 GLuint uMat;
@@ -25,7 +25,7 @@ float ang3 = 0;
 
 void myInit()
 {
-	cube.Init();
+	axis.Init();
 	pyramid.Init();
 
 	program = InitShader("vshader.glsl", "fshader.glsl");
@@ -52,40 +52,40 @@ void drawRobotArm(float ang1, float ang2, float ang3)
 	// First Joint
 	M = RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	// Upper Arm
 	CTM *= RotateZ(ang1);
 	M = Translate(0, 0.2, 0) * Scale(0.1, 0.5, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	// Second Joint
 	CTM *= Translate(0, 0.4, 0) * RotateZ(ang2);
 	M = RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	// Lower Arm1
 	M = Translate(0, 0.225, 0.07) * Scale(0.1, 0.55, 0.04);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	// Lower Arm2
 	M = Translate(0, 0.225, -0.07) * Scale(0.1, 0.55, 0.04);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	// Third Joint
 	CTM *= Translate(0, 0.45, 0) * RotateZ(ang3);
 	M = RotateX(90) * Scale(0.05, 0.22, 0.05);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	// Hands
 	M = Scale(0.35, 0.15, 0.1);
 	glUniformMatrix4fv(uMat, 1, true, CTM * M);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	CTM = temp;
 }

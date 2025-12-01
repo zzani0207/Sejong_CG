@@ -6,16 +6,17 @@
 #include <mat.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "MyObject.h"
 #include "MyCube.h"
 
 // 전역 변수 및 객체
 MyObject object;
-MyCube cube;
+MyCube axis;
 
-GLuint program;     // 축 그리기용 쉐이더
-GLuint prog_phong;  // 물체 그리기용 쉐이더
+GLuint program;     
+GLuint prog_phong;  
 
 GLuint uMat;
 GLuint uColor;
@@ -24,9 +25,9 @@ mat4 g_Mat = mat4(1.0f);
 int winWidth = 500;
 int winHeight = 500;
 
-// 회전 및 속도 제어
+// 회전
 int rotateAxis = 1; // 0:Y, 1:X, 2:Z
-float speed = 0;    // 0:Stop, 1:Rotate
+bool isRotated = false;  // 0:Stop, 1:Rotate
 
 // 조명 및 재질 파라미터
 float Shine = 50.0f;
@@ -40,45 +41,70 @@ mat4 ModelMat;
 float theta[3] = { 0, 0, 0 };
 char objName[256];
 
-// --- 수학 유틸리티 함수 ---
-mat4 myLookAt(vec3 eye, vec3 at, vec3 up) {
-    vec3 n = normalize(at - eye); n = at - eye; n /= length(n);
-    float a = dot(up, n); vec3 v = up - a * n; v /= length(v);
+mat4 myLookAt(vec3 eye, vec3 at, vec3 up) 
+{
+	mat4 V(1.0f);
+    vec3 n = normalize(at - eye); 
+    n = at - eye; 
+    n /= length(n);
+
+    float a = dot(up, n); 
+    vec3 v = up - a * n;
+    v /= length(v);
+
     vec3 w = cross(n, v);
+
     mat4 Rw(1.0f);
+
     Rw[0][0] = w.x; Rw[0][1] = v.x; Rw[0][2] = -n.x;
     Rw[1][0] = w.y; Rw[1][1] = v.y; Rw[1][2] = -n.y;
     Rw[2][0] = w.z; Rw[2][1] = v.z; Rw[2][2] = -n.z;
+
     mat4 Rc(1.0f);
-    for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++) Rc[i][j] = Rw[j][i];
+    for (int i = 0; i < 4; i++) 
+        for (int j = 0; j < 4; j++)
+            Rc[i][j] = Rw[j][i];
+
     mat4 Tc = Translate(-eye.x, -eye.y, -eye.z);
-    return Rc * Tc;
+
+    V = Rc * Tc;
+    return V;
 }
 
-mat4 myPerspective(float fovy, float aspect, float zNear, float zFar) {
+mat4 myPerspective(float fovy, float aspect, float zNear, float zFar) 
+{
     mat4 P(1.0f);
     float rad = fovy * 3.141592 / 180.0;
+
     float sz = 1 / zFar;
     float h = zFar * tan(rad / 2);
+
     float sy = 1 / h;
     float w = h * aspect;
     float sx = 1 / w;
+
     mat4 S = Scale(sx, sy, sz);
     mat4 M(1.0f);
+
     float c = -zNear / zFar;
-    M[2][2] = 1 / (c + 1); M[2][3] = -c / (c + 1);
-    M[3][2] = -1; M[3][3] = 0;
-    return M * S;
+    M[2][2] = 1 / (c + 1); 
+    M[2][3] = -c / (c + 1);
+    M[3][2] = -1;
+    M[3][3] = 0;
+
+	P = M * S;
+    return P;
 }
 
-void myInit() {
-    cube.Init();
+void myInit() 
+{
+    axis.Init();
     object.InitBuffer();
 
     program = InitShader("vshader.glsl", "fshader.glsl");
     prog_phong = InitShader("vphong.glsl", "fphong.glsl");
 
-    // 물체 크기 정규화 (화면에 꽉 차게)
+    // 물체 크기 정규화
     float maxDim = object.sizeXYZ.x;
     if (object.sizeXYZ.y > maxDim) maxDim = object.sizeXYZ.y;
     if (object.sizeXYZ.z > maxDim) maxDim = object.sizeXYZ.z;
@@ -87,35 +113,34 @@ void myInit() {
     ModelMat = Scale(scaling, scaling, scaling) * Translate(-object.center);
 }
 
-void DrawAxis() {
+void DrawAxis() 
+{
     glUseProgram(program);
     uMat = glGetUniformLocation(program, "uMat");
     uColor = glGetUniformLocation(program, "uColor");
 
-    // X축 (Red)
     mat4 x_a = Translate(1.5, 0.0, 0.0) * Scale(3.0, 0.02, 0.02);
     glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * x_a);
     glUniform4f(uColor, 1, 0, 0, 1);
-    cube.Draw(program);
+    axis.Draw(program);
 
-    // Y축 (Green)
     mat4 y_a = Translate(0.0, 1.5, 0.0) * Scale(0.02, 3.0, 0.02);
     glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * y_a);
     glUniform4f(uColor, 0, 1, 0, 1);
-    cube.Draw(program);
+    axis.Draw(program);
 
-    // Z축 (Blue)
     mat4 z_a = Translate(0.0, 0.0, 1.5) * Scale(0.02, 0.02, 3.0);
     glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * z_a);
     glUniform4f(uColor, 0, 0, 1, 1);
-    cube.Draw(program);
+    axis.Draw(program);
 }
 
-void display() {
+void display() 
+{
     glEnable(GL_DEPTH_TEST);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    float aspect = winWidth / static_cast<float>(winHeight);
+    float aspect = winWidth / (float)winHeight;
     
     // 카메라 설정 (0,0,5)
     mat4 ViewMat = myLookAt(vec3(0, 0, 5), vec3(0, 0, 0), vec3(0, 1, 0));
@@ -150,8 +175,9 @@ void display() {
     glutSwapBuffers();
 }
 
-void idle() {
-    if (speed > 0) {
+void idle()
+{
+    if (isRotated) {
         if (rotateAxis == 0) theta[0] += 1.0f;
         if (rotateAxis == 1) theta[1] += 1.0f;
         if (rotateAxis == 2) theta[2] += 1.0f;
@@ -160,23 +186,26 @@ void idle() {
     glutPostRedisplay();
 }
 
-void reshape(int w, int h) {
-    winWidth = w; winHeight = h;
+void reshape(int w, int h)
+{
+    winWidth = w; 
+    winHeight = h;
     glViewport(0, 0, w, h);
     glutPostRedisplay();
 }
 
-void myKeyboard(unsigned char c, int x, int y) {
+void myKeyboard(unsigned char c, int x, int y) 
+{
     if (c == ' ')
     {
-        if(speed==0)
+        if(isRotated==0)
         {
-            speed = 1;
+            isRotated = true;
             printf("Play!\n");
         }
         else 
         {
-            speed = 0;
+            isRotated = false;
             printf("Stop!\n");
 		}
     }   
@@ -203,12 +232,12 @@ void myKeyboard(unsigned char c, int x, int y) {
     
     if (c == '5') 
     { 
-        if (Shine < 100) Shine += 10; 
+        if (Shine < 100) Shine += 5; 
         printf("Increasing Shininess!\n"); 
     }
     if (c == '6')
     { 
-        if (Shine > 10) Shine -= 10;
+        if (Shine > 10) Shine -= 5;
         printf("Decreasing Shininess!\n"); 
     }
     
@@ -221,7 +250,8 @@ void myKeyboard(unsigned char c, int x, int y) {
     glutPostRedisplay();
 }
 
-void processMouse(int button, int state, int x, int y) {
+void processMouse(int button, int state, int x, int y) 
+{
     if (state == GLUT_DOWN) {
         if (button == GLUT_LEFT_BUTTON) rotateAxis = 1;
         if (button == GLUT_MIDDLE_BUTTON) rotateAxis = 0;

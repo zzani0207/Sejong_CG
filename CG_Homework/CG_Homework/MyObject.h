@@ -15,7 +15,8 @@ struct MyObjectVertex {
     vec3 normal;
 };
 
-class MyObject {
+class MyObject 
+{
 public:
     MyObject() : bInitialized(false), NumVertices(0), Vertices(NULL),
         verticeArray(NULL), normalArrayFlat(NULL), normalArrayPhong(NULL), verticesIdx(NULL),
@@ -40,7 +41,7 @@ public:
         bInitialized = false;
     }
 
-    // [Step 1] 파일 읽기 (CPU 작업)
+    // 파일 읽기
     int Init(const char* objName) {
         CleanUp();
 
@@ -55,23 +56,27 @@ public:
         char buffer[1024];
 
         // 1. 정점 및 면 개수 파악
-        while (fgets(buffer, sizeof(buffer), fp) != NULL) {
+        while (fgets(buffer, sizeof(buffer), fp) != NULL) 
+        {
             if (strlen(buffer) < 2) continue;
-            if (buffer[0] == 'v' && (buffer[1] == ' ' || buffer[1] == '\t')) vCount++;
-            else if (buffer[0] == 'f' && (buffer[1] == ' ' || buffer[1] == '\t')) fCount++;
+            if (buffer[0] == 'v' && buffer[1] == ' ') vCount++;
+            else if (buffer[0] == 'f' && buffer[1] == ' ' ) fCount++;
         }
 
-        if (vCount == 0 || fCount == 0) {
+        // 예외 처리
+        if (vCount == 0 || fCount == 0) 
+        {
             fclose(fp);
             return -1;
         }
 
         NumVertices = fCount * 3;
 
-        // 메모리 할당
+        // 초기화
         verticeArray = new vec3[vCount];
         normalArrayPhong = new vec3[vCount];
-        for (int i = 0; i < vCount; i++) {
+        for (int i = 0; i < vCount; i++) 
+        {
             normalArrayPhong[i] = vec3(0, 0, 0);
             verticeArray[i] = vec3(0, 0, 0);
         }
@@ -89,13 +94,16 @@ public:
         int faceIndex = 0;
         vec4 defaultColor = vec4(1.0, 1.0, 1.0, 1.0);
 
-        while (fgets(buffer, sizeof(buffer), fp) != NULL) {
+        while (fgets(buffer, sizeof(buffer), fp) != NULL) 
+        {
             if (strlen(buffer) < 2) continue;
 
-            if (buffer[0] == 'v' && (buffer[1] == ' ' || buffer[1] == '\t')) {
+            if (buffer[0] == 'v' && buffer[1] == ' ' )
+            {
                 if (vertexIndex >= vCount) continue;
                 float x, y, z;
-                if (sscanf(buffer + 2, "%f %f %f", &x, &y, &z) == 3) {
+                if (sscanf(buffer + 2, "%f %f %f", &x, &y, &z) == 3) 
+                {
                     verticeArray[vertexIndex] = vec3(x, y, z);
 
                     if (x > maxXYZ.x) maxXYZ.x = x; if (x < minXYZ.x) minXYZ.x = x;
@@ -105,11 +113,13 @@ public:
                     vertexIndex++;
                 }
             }
-            else if (buffer[0] == 'f' && (buffer[1] == ' ' || buffer[1] == '\t')) {
+            else if (buffer[0] == 'f' && buffer[1] == ' ') 
+            {
                 char* token = strtok(buffer + 2, " \t\n");
                 int vIdx[3] = { 0 };
                 int matches = 0;
-                while (token != NULL && matches < 3) {
+                while (token != NULL && matches < 3) 
+                {
                     vIdx[matches++] = atoi(token);
                     token = strtok(NULL, " \t\n");
                 }
@@ -142,8 +152,9 @@ public:
         return 0;
     }
 
-    // [Step 2] GPU 버퍼 생성 (OpenGL 작업)
-    void InitBuffer() {
+    // GPU 버퍼 생성
+    void InitBuffer() 
+    {
         if (NumVertices == 0) return;
 
         glGenVertexArrays(1, &vao);
@@ -156,46 +167,57 @@ public:
         PhongShading();
     }
 
-    void FlatShading() {
+    void FlatShading()
+    {
         if (!bInitialized) return;
-        for (int i = 0; i < NumVertices; ++i) Vertices[i].normal = normalArrayFlat[i];
+
+        for (int i = 0; i < NumVertices; ++i) 
+            Vertices[i].normal = normalArrayFlat[i];
         UpdateBuffer();
     }
 
-    void PhongShading() {
+    void PhongShading()
+    {
         if (!bInitialized) return;
-        for (int i = 0; i < NumVertices; ++i) Vertices[i].normal = normalize(normalArrayPhong[verticesIdx[i]]);
+
+        for (int i = 0; i < NumVertices; ++i) 
+            Vertices[i].normal = normalize(normalArrayPhong[verticesIdx[i]]);
         UpdateBuffer();
     }
 
-    void UpdateBuffer() {
+    void UpdateBuffer()
+    {
         if (!bInitialized) return;
+
         glBindVertexArray(vao);
         glBindBuffer(GL_ARRAY_BUFFER, bufferID);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(MyObjectVertex) * NumVertices, Vertices);
     }
 
-    void Draw(GLuint program) {
+    void Draw(GLuint program)
+    {
         if (!bInitialized) return;
 
-        // [중요] 버퍼 바인딩
         glBindVertexArray(vao);
         glBindBuffer(GL_ARRAY_BUFFER, bufferID);
 
         GLuint posAttrib = glGetAttribLocation(program, "vPosition");
-        if (posAttrib != -1) {
+        if (posAttrib != -1) 
+        {
             glEnableVertexAttribArray(posAttrib);
             glVertexAttribPointer(posAttrib, 4, GL_FLOAT, GL_FALSE, sizeof(MyObjectVertex), BUFFER_OFFSET(0));
         }
 
         GLuint colorAttrib = glGetAttribLocation(program, "vColor");
-        if (colorAttrib != -1) {
+        if (colorAttrib != -1) 
+        {
             glEnableVertexAttribArray(colorAttrib);
             glVertexAttribPointer(colorAttrib, 4, GL_FLOAT, GL_FALSE, sizeof(MyObjectVertex), BUFFER_OFFSET(sizeof(vec4)));
         }
 
         GLuint normalAttrib = glGetAttribLocation(program, "vNormal");
-        if (normalAttrib != -1) {
+        if (normalAttrib != -1)
+        {
             glEnableVertexAttribArray(normalAttrib);
             glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_TRUE, sizeof(MyObjectVertex), BUFFER_OFFSET(sizeof(vec4) * 2));
         }

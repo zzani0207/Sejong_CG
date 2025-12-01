@@ -15,9 +15,9 @@ uniform float uShine;
 
 void main()
 {
-    vec3 N = normalize(N3);
-    vec3 L = normalize(L3);
-    vec3 V = normalize(V3);
+    vec3 N = N3;
+    vec3 L = L3;
+    vec3 V = V3;
     vec3 R = reflect(-L, N);
 
     vec4 ambient = uKAmb * uLCol * color;
@@ -29,5 +29,5 @@ void main()
     vec4 specular = uKSpc * uLCol * RV;
 
     fColor = ambient + diffuse + specular;
-    fColor.a = 1.0;
+    //fColor.a = 1.0;
 }

@@ -35,7 +35,7 @@ vector<vec3> path;
 bool isAutoNavigating = false;
 int pathIndex = 0;
 
-MyCube cube;
+MyCube axis;
 GLuint program;
 
 mat4 g_Mat = mat4(1.0f);
@@ -215,7 +215,7 @@ void DrawPath()
 			ModelMat = Translate(center) * Translate(0, -0.5, 0) * Scale(vec3(0.1f, 0.1f, 1.0f));
 		glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 		glUniform4f(uColor, color.x, color.y, color.z, 1);
-		cube.Draw(program);
+		axis.Draw(program);
 	}
 }
 
@@ -279,14 +279,14 @@ void DrawMaze()
 				mat4 ModelMat = Translate(getPositionFromIndex(i, j));
 				glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 				glUniform4f(uColor, color.x, color.y, color.z, 1);
-				cube.Draw(program);
+				axis.Draw(program);
 			}
 }
 
 void myInit()
 {
 	LoadMaze();
-	cube.Init();
+	axis.Init();
 	program = InitShader("vshader.glsl", "fshader.glsl");
 
 }
@@ -303,7 +303,7 @@ void DrawGrid()
 		mat4 m = Translate(0, -0.5, -h / 2 + h / n * i) * Scale(w, 0.02, 0.02);
 		glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * m);
 		glUniform4f(uColor, 1, 1, 1, 1);
-		cube.Draw(program);
+		axis.Draw(program);
 	}
 
 	// 세로 격자
@@ -312,7 +312,7 @@ void DrawGrid()
 		mat4 m = Translate(-w / 2 + w / n * i, -0.5, 0) * Scale(0.02, 0.02, h);
 		glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * m);
 		glUniform4f(uColor, 1, 1, 1, 1);
-		cube.Draw(program);
+		axis.Draw(program);
 	}
 }
 
@@ -324,13 +324,13 @@ void drawCamera()
 	glUseProgram(program);
 	glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 	glUniform4f(uColor, 0, 1, 0, 1);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	ModelMat = Translate(cameraPos + viewDirection * cameraSize / 2) * RotateY(cameraAngle) * Scale(vec3(cameraSize / 2));
 	glUseProgram(program);
 	glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 	glUniform4f(uColor, 0, 1, 0, 1);
-	cube.Draw(program);
+	axis.Draw(program);
 }
 
 void drawGoal()
@@ -341,12 +341,12 @@ void drawGoal()
 	mat4 ModelMat = Translate(goalPos) * RotateY(g_time * 3) * Scale(vec3(GoalSize));
 	glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 	glUniform4f(uColor, 0, 0, 0, 0);
-	cube.Draw(program);
+	axis.Draw(program);
 
 	ModelMat = Translate(goalPos) * RotateY(g_time * 3 + 45) * Scale(vec3(GoalSize));
 	glUniformMatrix4fv(uMat, 1, GL_TRUE, g_Mat * ModelMat);
 	glUniform4f(uColor, 0, 0, 0, 0);
-	cube.Draw(program);
+	axis.Draw(program);
 }
 
 void drawScene(bool bDrawCamera = true)
