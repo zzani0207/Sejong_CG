@@ -27,12 +27,15 @@
     <ClCompile Include="Homework4_ObjModelViewer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Homework5_RayTracing.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlane.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MyCube.h">
+    <ClInclude Include="MyCube_obj.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MyPyramid.h">
@@ -45,6 +48,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MyObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyCube.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MySphere.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Targa.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -67,16 +79,28 @@
     <None Include="fshader_maze.glsl">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="fphong.glsl">
+    <None Include="fphong_obj.glsl">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="vphong.glsl">
+    <None Include="vphong_obj.glsl">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="fshader.glsl">
+    <None Include="fshader_obj.glsl">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="vshader.glsl">
+    <None Include="vshader_obj.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fcube_ray.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="fPhong_ray.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="vcube_ray.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="vPhong_ray.glsl">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
@@ -87,5 +111,25 @@
     <Text Include="maze.txt">
       <Filter>리소스 파일</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="museum_negx.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="museum_negy.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="museum_negz.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="museum_posx.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="museum_posy.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="museum_posz.tga">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

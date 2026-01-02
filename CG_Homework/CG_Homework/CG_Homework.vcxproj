@@ -28,24 +28,34 @@
     <ClCompile Include="Homework3_MazeNavigator.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Homework4_ObjModelViewer.cpp" />
+    <ClCompile Include="Homework4_ObjModelViewer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Homework5_RayTracing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCube.h" />
+    <ClInclude Include="MyCube_obj.h" />
     <ClInclude Include="MyPlane.h" />
     <ClInclude Include="MyPyramid.h" />
+    <ClInclude Include="MySphere.h" />
     <ClInclude Include="MyTarget.h" />
     <ClInclude Include="MyUtil.h" />
     <ClInclude Include="MyObject.h" />
+    <ClInclude Include="Targa.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fphong.glsl" />
-    <None Include="fshader.glsl" />
+    <None Include="fcube_ray.glsl" />
+    <None Include="fPhong_ray.glsl" />
+    <None Include="fphong_obj.glsl" />
+    <None Include="fshader_obj.glsl" />
     <None Include="fshader_arm.glsl" />
     <None Include="fshader_maze.glsl" />
     <None Include="fshader_plane.glsl" />
-    <None Include="vphong.glsl" />
-    <None Include="vshader.glsl" />
+    <None Include="vcube_ray.glsl" />
+    <None Include="vPhong_ray.glsl" />
+    <None Include="vphong_obj.glsl" />
+    <None Include="vshader_obj.glsl" />
     <None Include="vshader_arm.glsl" />
     <None Include="vshader_maze.glsl" />
     <None Include="vshader_plane.glsl" />
@@ -53,6 +63,14 @@
   <ItemGroup>
     <Text Include="maze.txt" />
     <Text Include="maze2.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="museum_negx.tga" />
+    <Image Include="museum_negy.tga" />
+    <Image Include="museum_negz.tga" />
+    <Image Include="museum_posx.tga" />
+    <Image Include="museum_posy.tga" />
+    <Image Include="museum_posz.tga" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -112,8 +130,8 @@
     <LibraryPath>C:\Sejong_CG\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>C:\Sejong_CG\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Sejong_CG\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\AhnChanhwi\WallPaper\Sejong_Univ\CG_Directory\freeglut_and_glew\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\AhnChanhwi\WallPaper\Sejong_Univ\CG_Directory\freeglut_and_glew\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
